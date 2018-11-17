@@ -1,0 +1,15 @@
+---
+
+version: '3'
+services:
+  git-server:
+    user: "1000"
+    image: local/git-server:0.1
+    restart: "no"
+    container_name: git-server
+    ports:
+      - "2222:2022"
+    volumes:
+      - ~/docker-git-server/keys:/git-keys
+      - ~/docker-git-server/repos:/home/git
+

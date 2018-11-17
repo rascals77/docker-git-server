@@ -1,0 +1,17 @@
+#!/bin/sh
+
+##
+## SSH_ORIGINAL_COMMAND looks like this on a git push:
+##      git-receive-pack 'repo_name'
+##
+## SSH_ORIGINAL_COMMAND is blank during an ssh test
+##
+
+if [ "${SSH_ORIGINAL_COMMAND}" = "" ] ; then
+   printf '%s\n' "Welcome to git-server-docker!"
+   printf '%s\n' "You've successfully authenticated, but I do not"
+   printf '%s\n' "provide interactive shell access."
+   exit 128
+fi
+
+exec /usr/bin/git-shell -c "${SSH_ORIGINAL_COMMAND}"
