@@ -22,13 +22,14 @@ fi
 
 for DIR in ${REPODIR} ${KEYSDIR} ; do
    mkdir ${DIR} 2>/dev/null
-   if hash chcon 2>/dev/null ; then
+   if hash chcon 2>/dev/null && hash enforce 2>/dev/null ; then
       chcon -t container_file_t ${DIR}
       if [ $? -ne 0 ] ; then
          echo "ERROR: enable to change SELinux context... exiting."
          exit 1
       fi
    fi
+
 done
 
 echo -e "\x1b[1;32mGenerate ssh keys\x1b[0m"
