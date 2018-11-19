@@ -9,7 +9,7 @@ StrictHostKeyChecking no
 Host mygitserver
     Hostname localhost
     Port 2222
-    IdentityFile ~/gitserver/keys/id_rsa
+    IdentityFile ~/docker-git-server/keys/id_rsa
     IdentitiesOnly yes
 ```
 

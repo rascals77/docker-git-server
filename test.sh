@@ -29,7 +29,6 @@ for DIR in ${REPODIR} ${KEYSDIR} ; do
          exit 1
       fi
    fi
-
 done
 
 echo -e "\x1b[1;32mGenerate ssh keys\x1b[0m"
