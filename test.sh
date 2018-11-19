@@ -22,7 +22,7 @@ fi
 
 for DIR in ${REPODIR} ${KEYSDIR} ; do
    mkdir ${DIR} 2>/dev/null
-   if hash chcon 2>/dev/null && hash enforce 2>/dev/null ; then
+   if hash chcon 2>/dev/null && hash getenforce 2>/dev/null ; then
       chcon -t container_file_t ${DIR}
       if [ $? -ne 0 ] ; then
          echo "ERROR: enable to change SELinux context... exiting."
