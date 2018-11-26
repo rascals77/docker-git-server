@@ -14,4 +14,7 @@ if [ "${SSH_ORIGINAL_COMMAND}" = "" ] ; then
    exit 128
 fi
 
-exec /usr/bin/git-shell -c "${SSH_ORIGINAL_COMMAND}"
+# Make the repo path relative instead of absolute
+RUN=$(echo ${SSH_ORIGINAL_COMMAND} | sed -e "s/\(^\S*\) '\/*\(.*\)'$/\1 '\2'/")
+
+exec /usr/bin/git-shell -c "${RUN}"
